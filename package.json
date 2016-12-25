@@ -1,0 +1,29 @@
+{
+  "name": "dotatimebotapi",
+  "version": "1.0.0",
+  "description": "API for editing hears for DotaTimeBot",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mostovtsov/dotatimebotapi.git"
+  },
+  "keywords": [
+    "API",
+    "express",
+    "nodejs",
+    "dotatimebot"
+  ],
+  "author": "mostovtsov@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mostovtsov/dotatimebotapi/issues"
+  },
+  "homepage": "https://github.com/mostovtsov/dotatimebotapi#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
