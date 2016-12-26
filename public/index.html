@@ -3,17 +3,16 @@
 <head>
     <title>Hears.json editor</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js" type="text/javascript"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js" type="text/javascript"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="app\app.js" type="text/javascript"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js" type="text/javascript"></script>-->
+    <script src="app/app.js" type="text/javascript"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body ng-app="hearsApp">
     <div ng-controller="HearsListController">
         <h1>Hears.json editor</h1>
-        <input type="text" ng-model="q" class="search-query" id="hears_search" placeholder="Search">
-        <table>
+        <input type="text" ng-model="search" class="form-control" id="hears_search" placeholder="Search">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Hear</th>
@@ -22,16 +21,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="hear in hearsList | filter:q as results">
-                    <td>{{hear.text}}</td>
+                <tr ng-repeat="hear in hearsList | filter:search">
+                    <td>{{getTextVariants(hear.text)}}</td>
                     <td>{{hear.answer}}</td>
                     <td>
-                        <a ng-href="#"><i class="glyphicon glyphicon-pencil"></i></a>
+                        <a ng-href="#/edit/{{hear.$id}}"><i class="glyphicon glyphicon-pencil"></i></a>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <!--<div ng-view></div>-->
 </body>
 
 </html>
