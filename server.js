@@ -48,12 +48,6 @@ app.post('/remove', function (req, res) {
         return value.id != removedItem.id;
     });
 
-    // for (var i = hearsArray.length; i--;) {
-    //     if (JSON.stringify(hearsArray[i].text) == JSON.stringify(removedItem.text)) {
-    //         hearsArray.splice(i, 1);
-    //     }
-    // }
-
     rewriteFile(fs, res, filteredArray);
     res.sendStatus(200);
 });
@@ -76,10 +70,12 @@ app.listen(port, function () {
 
 
 var rewriteFile = function (fs, res, hearsArray) {
-    fs.writeFile('./data/hears.json', JSON.stringify(hearsArray), function (err, data) {
+    hearsJSON = JSON.stringify(hearsArray);
+    fs.writeFile('./data/hears.json', hearsJSON, (err) => {
         if (err) {
             console.log(`Can't write hears.json`, err);
             res.sendStatus(500);
         }
+        console.log('File is saved!');
     });
 }
