@@ -24,18 +24,37 @@ app.get('/hears', function (req, res) {
     }
 });
 
+app.post('/edit', function (req, res) {
+    console.log('edit', req.body);
+    var editItem = req.body;
+    var hearsArray = JSON.parse(hearsJSON);
+
+    var filteredArray = hearsArray.filter((value) => {
+        return value.id != editItem.id;
+    });
+
+    filteredArray.push(editItem);
+
+    rewriteFile(fs, res, filteredArray);
+    res.sendStatus(200);
+});
+
 app.post('/remove', function (req, res) {
     console.log('remove', req.body);
     var removedItem = req.body;
     var hearsArray = JSON.parse(hearsJSON);
 
-    for (var i = hearsArray.length; i--;) {
-        if (JSON.stringify(hearsArray[i].text) == JSON.stringify(removedItem.text)) {
-            hearsArray.splice(i, 1);
-        }
-    }
+    var filteredArray = hearsArray.filter((value) => {
+        return value.id != removedItem.id;
+    });
 
-    rewriteFile(fs, res, hearsArray);
+    // for (var i = hearsArray.length; i--;) {
+    //     if (JSON.stringify(hearsArray[i].text) == JSON.stringify(removedItem.text)) {
+    //         hearsArray.splice(i, 1);
+    //     }
+    // }
+
+    rewriteFile(fs, res, filteredArray);
     res.sendStatus(200);
 });
 
