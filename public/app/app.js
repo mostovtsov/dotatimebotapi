@@ -13,11 +13,17 @@ function HearsListController($scope, $http) {
         });
     };
 
-    $scope.save = function (hear) {
-        $http.post('/save', JSON.stringify(hear)).then(function successCallback(response) {
-            console.log('Hear saves', response);
+    $scope.add = function (hear) {
+        $http.post('/add', JSON.stringify(hear)).then(function successCallback(response) {
+            console.log('Hear added', response);
         });
-    }
+    };
+
+    $scope.edit = function (hear) {
+        $http.post('/edit', JSON.stringify(hear)).then(function successCallback(response) {
+            console.log('Hear updated', response);
+        });
+    };
 };
 
 var app = angular.module('hearsApp', [])

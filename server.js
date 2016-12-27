@@ -41,7 +41,7 @@ app.post('/edit', function (req, res) {
 
 app.post('/remove', function (req, res) {
     console.log('remove', req.body);
-    var removedItem = req.body;
+    var removedItemId = req.body;
     var hearsArray = JSON.parse(hearsJSON);
 
     var filteredArray = hearsArray.filter((value) => {
