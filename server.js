@@ -41,7 +41,7 @@ app.post('/edit', function (req, res) {
 
 app.post('/remove', function (req, res) {
     console.log('remove', req.body);
-    var removedItemId = req.body;
+    var removedItem = req.body;
     var hearsArray = JSON.parse(hearsJSON);
 
     var filteredArray = hearsArray.filter((value) => {
@@ -61,7 +61,7 @@ app.post('/add', function (req, res) {
 
         rewriteFile(fs, res, hearsArray);
     }
-    res.sendStatus(200);
+    res.send(JSON.stringify(req.body));
 });
 
 app.listen(port, function () {
